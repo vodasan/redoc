@@ -1,0 +1,11 @@
+{
+  "generator-openapi-repo": {
+    "importExistingSpec": true,
+    "importedSpec": "C:\\wamp64\\www\\redoc\\quoteRequestV2\\swagger.yaml",
+    "name": "quoteRequestManagement",
+    "repo": "vodasan/redoc",
+    "splitSpec": false,
+    "samples": true,
+    "installSwaggerUI": true
+  }
+}

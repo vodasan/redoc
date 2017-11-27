@@ -1,0 +1,1979 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "0.1.0_inProgress"
+  title: "API QuoteRequestManagementV2"
+host: "api-obs-sandbox.kmt.orange.com"
+basePath: "/mockupREST/obs-demo/quoteRequestManagement/v1"
+schemes:
+- "https"
+consumes:
+- "application/json;charset=utf-8"
+produces:
+- "application/json;charset=utf-8"
+tags:
+- name: "QuoteRequests"
+  description: ""
+- name: "attachments"
+  description: ""
+- name: "Quotes"
+  description: ""
+- name: "BusinessTalk"
+  description: ""
+paths:
+  /quoteRequests:
+    post:
+      tags:
+      - "QuoteRequests"
+      operationId: "requestCreate"
+      summary: "create request"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "request"
+        required: true
+        in: "body"
+        description: ""
+        schema:
+          $ref: "#/definitions/Request"
+      responses:
+        201:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Request"
+    get:
+      tags:
+      - "QuoteRequests"
+      operationId: "requestFind"
+      summary: "find request"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "offset"
+        required: false
+        in: "query"
+        description: "The index of the first element to retrieve. Zero is the first\
+          \ element of the collection"
+        type: "integer"
+        format: "int32"
+      - name: "limit"
+        required: false
+        in: "query"
+        description: "The maximum number of elements to retrieve"
+        type: "integer"
+        format: "int32"
+      - name: "sort"
+        required: false
+        in: "query"
+        description: "The list of field names to sort the result. Prefixing a field\
+          \ name with a \"-\" sign will indicate a descending order"
+        type: "string"
+      - name: "fields"
+        required: false
+        in: "query"
+        description: "The list of field names to retrieve"
+        type: "string"
+      - name: "displayName"
+        required: false
+        in: "query"
+        description: "If the name of a linked resource must be displayed or not"
+        type: "boolean"
+        default: true
+      - name: "displayId"
+        required: false
+        in: "query"
+        description: "If the id of a linked resource must be displayed or not"
+        type: "boolean"
+        default: true
+      - name: "displayHref"
+        required: false
+        in: "query"
+        description: "If the link to a linked resource must be displayed or not"
+        type: "boolean"
+        default: true
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Request"
+          headers:
+            X-Total-Count:
+              description: "The total number of items in the collection"
+              type: "integer"
+              format: "int32"
+            X-Result-Count:
+              description: "The actual number of items contained in the response body"
+              type: "integer"
+              format: "int32"
+  /quoteRequests/{requestId}:
+    get:
+      tags:
+      - "QuoteRequests"
+      operationId: "requestGet"
+      summary: "get request"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      - name: "fields"
+        required: false
+        in: "query"
+        description: "The list of field names to retrieve"
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Request"
+    patch:
+      tags:
+      - "QuoteRequests"
+      operationId: "requestPatch"
+      summary: "patch request"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      - name: "request"
+        required: true
+        in: "body"
+        description: ""
+        schema:
+          $ref: "#/definitions/Request"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Request"
+    delete:
+      tags:
+      - "QuoteRequests"
+      operationId: "requestDelete"
+      summary: "delete request"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      responses:
+        204:
+          description: "Success"
+  /quoteRequests/{requestId}/attachments:
+    post:
+      tags:
+      - "attachments"
+      operationId: "attachmentCreate"
+      summary: "create attachment"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      - name: "Attachment"
+        required: true
+        in: "body"
+        description: ""
+        schema:
+          $ref: "#/definitions/Attachment"
+      responses:
+        201:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Attachment"
+    get:
+      tags:
+      - "attachments"
+      operationId: "attachmentFind"
+      summary: "find attachment"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      - name: "offset"
+        required: false
+        in: "query"
+        description: "The index of the first element to retrieve. Zero is the first\
+          \ element of the collection"
+        type: "integer"
+        format: "int32"
+      - name: "limit"
+        required: false
+        in: "query"
+        description: "The maximum number of elements to retrieve"
+        type: "integer"
+        format: "int32"
+      - name: "sort"
+        required: false
+        in: "query"
+        description: "The list of field names to sort the result. Prefixing a field\
+          \ name with a \"-\" sign will indicate a descending order"
+        type: "string"
+      - name: "fields"
+        required: false
+        in: "query"
+        description: "The list of field names to retrieve"
+        type: "string"
+      - name: "displayName"
+        required: false
+        in: "query"
+        description: "If the name of a linked resource must be displayed or not"
+        type: "boolean"
+        default: true
+      - name: "displayId"
+        required: false
+        in: "query"
+        description: "If the id of a linked resource must be displayed or not"
+        type: "boolean"
+        default: true
+      - name: "displayHref"
+        required: false
+        in: "query"
+        description: "If the link to a linked resource must be displayed or not"
+        type: "boolean"
+        default: true
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Attachment"
+          headers:
+            X-Total-Count:
+              description: "The total number of items in the collection"
+              type: "integer"
+              format: "int32"
+            X-Result-Count:
+              description: "The actual number of items contained in the response body"
+              type: "integer"
+              format: "int32"
+  /quoteRequests/{requestId}/attachments/{attachmentId}:
+    get:
+      tags:
+      - "attachments"
+      operationId: "attachmentGet"
+      summary: "get attachment"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      - name: "attachmentId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      - name: "fields"
+        required: false
+        in: "query"
+        description: "The list of field names to retrieve"
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Attachment"
+  /quoteRequests/{requestId}/attachments/content:
+    get:
+      tags:
+      - "attachments"
+      operationId: "attachmentContent"
+      summary: "Download the attachment."
+      description: "The URI is available in the attachment details."
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      responses:
+        204:
+          description: "Success"
+  /quoteRequests/{requestId}/quotes:
+    get:
+      tags:
+      - "Quotes"
+      operationId: "quoteFind"
+      summary: "find quote"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Quote"
+  /quoteRequests/{requestId}/quotes/{quoteId}:
+    get:
+      tags:
+      - "Quotes"
+      operationId: "quoteGet"
+      summary: "get quote"
+      description: ""
+      deprecated: false
+      parameters:
+      - name: "requestId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      - name: "quoteId"
+        in: "path"
+        required: true
+        type: "string"
+        description: ""
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Quote"
+  /bttalk/newSite:
+    post:
+      tags:
+      - "BusinessTalk"
+      operationId: "requestNewSite"
+      summary: "newSite request"
+      description: ""
+      deprecated: false
+      responses:
+        204:
+          description: "Success"
+  /bttalk/updateSite:
+    post:
+      tags:
+      - "BusinessTalk"
+      operationId: "requestUpdateSite"
+      summary: "updateSite request"
+      description: ""
+      deprecated: false
+      responses:
+        204:
+          description: "Success"
+  /bttalk/moveSite:
+    post:
+      tags:
+      - "BusinessTalk"
+      operationId: "requestMoveSite"
+      summary: "moveSite request"
+      description: ""
+      deprecated: false
+      responses:
+        204:
+          description: "Success"
+definitions:
+  RequestTypes:
+    description: "List of request's short types"
+    type: "string"
+    enum:
+    - "new"
+    - "change"
+    - "disconnect"
+  CustomerType:
+    description: "Allow to identify the type of Customers"
+    type: "string"
+    enum:
+    - "FR"
+    - "INT"
+  RequestStatus:
+    description: "List of status of a request"
+    type: "string"
+    enum:
+    - "Draft"
+    - "Pending Orange Acknowledgement"
+    - "Pending Qualification"
+    - "Pending Approval"
+    - "Your Input Required"
+    - "In Progress"
+    - "Cancelled"
+    - "Quote pending approval"
+    - "Expired"
+    - "Order pending approval"
+    - "Approved"
+    - "Rejected"
+    - "Delivered"
+    - "Completed"
+    - "Submitted"
+    - "Disconnected"
+  RequestSubTypes:
+    description: "List of request's more readable types"
+    type: "string"
+    enum:
+    - "new request for a new service"
+    - "upgrade/downgrade an existing service (on same site)"
+    - "relocation of an existing service to another site"
+    - "migration of an existing service to another service"
+    - "migration of service and relocation of site"
+  QuoteStatus:
+    description: "List of possible status of an quote"
+    type: "string"
+    enum:
+    - "new"
+    - "pending"
+    - "inprogress"
+    - "rejected"
+    - "accepted"
+    - "cancelled"
+  EventTypes:
+    description: "List of event's types"
+    type: "string"
+    enum:
+    - "Production start"
+    - "Initial delivery date to {d/m/YYYY}"
+    - "Rescheduled delivery date to {d/m/YYYY}"
+    - "Primary appointment to {d/m/YYYY}"
+    - "Backup appointment to {d/m/YYYY}"
+    - "Installation of primary router successful"
+    - "Installation of primary router partial"
+    - "Installation of primary router failed"
+    - "Frozen production due to {origin} - {cause}"
+    - "Report production due to {origin} - {cause}"
+    - "Decommissioned to {d/m/YYYY}"
+  MessageType:
+    description: "List of message types"
+    type: "string"
+    enum:
+    - "Comments"
+    - "Send message to customer"
+    - "Message received from customer"
+  OrderShortTypes:
+    description: "List of order's short types"
+    type: "string"
+    enum:
+    - "new"
+    - "change"
+    - "disconnect"
+  OrderTypes:
+    description: "List of order's more readable types"
+    type: "string"
+    enum:
+    - "new request for a new service"
+    - "upgrade/downgrade an existing service (on same site)"
+    - "relocation of an existing service to another site"
+    - "migration of an existing service to another service"
+    - "migration of service and relocation of site"
+  OrderStatus:
+    description: "List of status of an order"
+    type: "string"
+    enum:
+    - "Draft"
+    - "Pending Orange Acknowledgement"
+    - "Pending Qualification"
+    - "Pending Approval"
+    - "Your Input Required"
+    - "In Progress"
+    - "Cancelled"
+    - "Quote pending approval"
+    - "Expired"
+    - "Order pending approval"
+    - "Approved"
+    - "Rejected"
+    - "Delivered"
+    - "Completed"
+    - "Submitted"
+    - "Disconnected"
+  ServiceOptionsBVPN:
+    description: ""
+    type: "string"
+    enum:
+    - "standardServiceDelivery"
+    - "standardServiceSupport"
+    - "businessHoursMaintenance"
+    - "siteSurvey"
+    - "airQuickStart"
+    - "consultancy"
+  Currency:
+    description: ""
+    type: "string"
+    enum:
+    - "EUR"
+    - "USD"
+    - "GBD"
+    - "CNY"
+  ZErrorDetail:
+    description: ""
+    required:
+    - "code"
+    - "message"
+    type: "object"
+    properties:
+      code:
+        description: ""
+        type: "integer"
+        format: "int32"
+      message:
+        description: ""
+        type: "string"
+      description:
+        description: ""
+        type: "string"
+      infoURL:
+        description: ""
+        type: "string"
+  ZError:
+    description: ""
+    required:
+    - "code"
+    - "message"
+    type: "object"
+    properties:
+      code:
+        description: ""
+        type: "integer"
+        format: "int32"
+      message:
+        description: ""
+        type: "string"
+      description:
+        description: ""
+        type: "string"
+      infoURL:
+        description: ""
+        type: "string"
+      details:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/ZErrorDetail"
+  Request:
+    description: "Request from to the Customer. An order or quote can be generated."
+    required:
+    - "id"
+    - "reference"
+    - "customerAccount"
+    - "internalReference"
+    - "requestor"
+    - "type"
+    - "subType"
+    - "items"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the request"
+        type: "string"
+      reference:
+        description: "Reference set by the Customer for identifying the request"
+        type: "string"
+      customerAccount:
+        description: "Reference on the customer Account"
+        $ref: "#/definitions/CustomerAccountRef"
+      internalReference:
+        description: "Reference set by Orange"
+        type: "string"
+      requestor:
+        description: "The person who created the request"
+        $ref: "#/definitions/Individual"
+      currentOwner:
+        description: "The current owner of the request. It's the same as the user\
+          \ until the quote is reassigned"
+        $ref: "#/definitions/Individual"
+      type:
+        description: "The short status of the request (new, change, ...)"
+        $ref: "#/definitions/RequestTypes"
+      subType:
+        description: "A more readable status"
+        $ref: "#/definitions/RequestSubTypes"
+      currency:
+        description: "The currency to use"
+        type: "string"
+      status:
+        description: "Indicate the status of the request such as draft, sent, etc..."
+        $ref: "#/definitions/RequestStatus"
+      items:
+        description: "The request's item that contains offer, quote and order."
+        type: "array"
+        items:
+          $ref: "#/definitions/RequestItems"
+      milestones:
+        description: "Structure containing the key dates associated with the request"
+        $ref: "#/definitions/Milestone"
+      billing:
+        description: "Voir la structure"
+        type: "string"
+      isArchived:
+        description: "If the request is archived or not"
+        type: "boolean"
+      isSso:
+        description: "If the quote and the order are accepted together or not"
+        type: "boolean"
+        default: false
+      comment:
+        description: "A comment on the request"
+        type: "string"
+      createdAt:
+        description: "Date at which the object was created"
+        type: "string"
+        format: "date-time"
+      updatedAt:
+        description: "Date at which the object was updated"
+        type: "string"
+        format: "date-time"
+  Quote:
+    description: "Model of a quote"
+    required:
+    - "id"
+    - "status"
+    - "offer"
+    - "orderTerm"
+    - "author"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the quote"
+        type: "string"
+      status:
+        description: "The status of the quote (new, in progress, ...)"
+        $ref: "#/definitions/QuoteStatus"
+      site:
+        description: "The delivery site"
+        $ref: "#/definitions/Location"
+      offer:
+        description: "The offer"
+        $ref: "#/definitions/OfferRef"
+      orderTerm:
+        description: "The number of months before the end of the order"
+        type: "integer"
+        format: "int32"
+      author:
+        description: "The author of the quote"
+        $ref: "#/definitions/Individual"
+      primaryContact:
+        description: "The customer primary contact"
+        $ref: "#/definitions/Individual"
+      secondaryContact:
+        description: "The customer secondary contact"
+        $ref: "#/definitions/Individual"
+      orderSignatory:
+        description: "The customer who signed the order"
+        $ref: "#/definitions/Individual"
+      milestones:
+        description: "Structure containing the key dates associated with the quote"
+        $ref: "#/definitions/Milestone"
+      createdAt:
+        description: "Date at which the object was created"
+        type: "string"
+        format: "date-time"
+      updatedAt:
+        description: "Date at which the object was updated"
+        type: "string"
+        format: "date-time"
+  CustomerAccountRef:
+    description: "Model of a customer account reference"
+    required:
+    - "id"
+    - "name"
+    - "href"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the customer account"
+        type: "string"
+      name:
+        description: "Name of the Customer"
+        type: "string"
+      href:
+        description: "Unique URI used to access to the customer account resource"
+        type: "string"
+  Milestone:
+    description: "List of milestone."
+    required:
+    - "issuedAt"
+    - "hardwareAppointmentAt"
+    - "backupHadwareAppointmentAt"
+    type: "object"
+    properties:
+      issuedAt:
+        description: "Date when the parent resource was created\nFor a request is\
+          \ creationDate, for a quote is deliveryDateOfProposal. In the future, prodweb\
+          \ will have a creationDate"
+        type: "string"
+        format: "date"
+      validatedAt:
+        description: "Date when the parent resource was validated\nFor a request is\
+          \ submissionDate, for quote is validationDate, for the order is orderLocalValidationDate,\
+          \ for prodweb is productionStart"
+        type: "string"
+        format: "date"
+      customerRequestedDeliveryAt:
+        description: "Date of the delivery requested by the customer (ASAP or a given\
+          \ date).\nExample : null (ASAP) or 1504166400 (given date)"
+        type: "string"
+        format: "date"
+      initialTargetDeliveryAt:
+        description: "The initial target delivery date"
+        type: "string"
+        format: "date"
+      targetDeliveryAt:
+        description: "The target delivery date\nFor an order is estimatedTimeOfDelivery,\
+          \ for prodweb is rescheduledDelivery (history)"
+        type: "string"
+        format: "date"
+      signatureAt:
+        description: "Date of the signature\nFor order is depositDate"
+        type: "string"
+        format: "date"
+      equipmentOrderingAt:
+        description: "The equipment's order date"
+        type: "string"
+        format: "date"
+      circuitOrderingAt:
+        description: "The circuit's order date"
+        type: "string"
+        format: "date"
+      equipmentDeliveryAt:
+        description: "The equipment's delivery date"
+        type: "string"
+        format: "date"
+      circuitDeliveryAt:
+        description: "The circuit's delivery date"
+        type: "string"
+        format: "date"
+      inHouseWiringPerformAt:
+        description: "The perform date of house's wiring\nIn the future, prodweb will\
+          \ have a date of access appointment"
+        type: "string"
+        format: "date"
+      hardwareAppointmentAt:
+        description: "Date of the appointment to install the router\nFor prodweb is\
+          \ primaryAppointment"
+        type: "string"
+        format: "date"
+      backupHadwareAppointmentAt:
+        description: "Date of the appointment to install the backup router\nFor prodweb\
+          \ is backupAppointment."
+        type: "string"
+        format: "date"
+      hardwareInstallationAt:
+        description: "The installation date of an hardware\nFor prodweb is the date\
+          \ where the router is installed"
+        type: "string"
+        format: "date"
+      backupHardwareInstallationAt:
+        description: "The installation date of the backup hardware\nFor prodweb is\
+          \ the date where the backup router is installed"
+        type: "string"
+        format: "date"
+      readyForServiceAt:
+        description: "Date when all installations are done\nFor order is rfsdate,\
+          \ for prodweb is the date of availability"
+        type: "string"
+        format: "date"
+      expiredAt:
+        description: "Date when the parent resource was expired\nFor a request is\
+          \ expirationDate, for a quote/order is expiryDate"
+        type: "string"
+        format: "date"
+      postponedAt:
+        description: "Date of postponement of commissioning"
+        type: "string"
+        format: "date"
+      frozenAt:
+        description: "Date when the parent resource was frozen"
+        type: "string"
+        format: "date"
+      cancelledAt:
+        description: "Date when the parent resource was cancelled"
+        type: "string"
+        format: "date"
+      completedAt:
+        description: "Date when the parent resource was completed"
+        type: "string"
+        format: "date"
+  OfferRef:
+    description: "Model describing the reference on an offer."
+    required:
+    - "code"
+    - "name"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the offer"
+        type: "string"
+      code:
+        description: ""
+        type: "string"
+      name:
+        description: "Name of the offer"
+        type: "string"
+      href:
+        description: "Link to the offer ressoure"
+        type: "string"
+  Location:
+    description: "Model of a location"
+    required:
+    - "name"
+    - "address"
+    - "primaryContact"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the location"
+        type: "string"
+      externalReference:
+        description: ""
+        type: "string"
+      tradingName:
+        description: ""
+        type: "string"
+      siret:
+        description: ""
+        type: "string"
+      name:
+        description: ""
+        type: "string"
+      type:
+        description: ""
+        type: "string"
+      phone:
+        description: ""
+        type: "string"
+      fax:
+        description: ""
+        type: "string"
+      accessInformation:
+        description: ""
+        type: "string"
+      email:
+        description: ""
+        type: "string"
+      address:
+        description: ""
+        $ref: "#/definitions/Address"
+      primaryContact:
+        description: ""
+        $ref: "#/definitions/Individual"
+      secondaryContact:
+        description: ""
+        $ref: "#/definitions/Individual"
+      comment:
+        description: ""
+        type: "string"
+      href:
+        description: ""
+        type: "string"
+  Individual:
+    description: "Model of a Individual."
+    required:
+    - "id"
+    - "firstName"
+    - "lastName"
+    - "email"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of a n individual."
+        type: "string"
+      name:
+        description: "The title and the first and last name of the individual."
+        type: "string"
+      title:
+        description: "The title of the individual.\n_Example: Mr., Mrs., or Miss_"
+        type: "string"
+      firstName:
+        description: "The first name of the individual."
+        type: "string"
+      middleName:
+        description: "The middle name of the individual."
+        type: "string"
+      lastName:
+        description: "The last name of the individual."
+        type: "string"
+      gender:
+        description: "The gender of the individual."
+        type: "string"
+      mobile:
+        description: "The mobile phone number. Use the [Rec.E164](http://www.itu.int/rec/T-REC-E.164/)\
+          \ without \"+\" prefix"
+        type: "string"
+      phone:
+        description: "The phone number.  Use the [Rec.E164](http://www.itu.int/rec/T-REC-E.164/)\
+          \ without \"+\" prefix"
+        type: "string"
+      email:
+        description: "The email address of the individual. There is no need to include\
+          \ the scheme \"mailto:\""
+        type: "string"
+  Attachment:
+    description: "Model of a attachment"
+    required:
+    - "id"
+    - "name"
+    - "type"
+    - "filename"
+    - "filesize"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the attachment"
+        type: "string"
+      name:
+        description: "A more readable string that describes the attachment"
+        type: "string"
+      type:
+        description: "Description of the attachment"
+        type: "string"
+      filename:
+        description: "Name of the attachment"
+        type: "string"
+      filesize:
+        description: "The size in octet of the attachment"
+        type: "integer"
+        format: "int32"
+      href:
+        description: "Path to the file"
+        type: "string"
+      createdAt:
+        description: "Date at which the object was created"
+        type: "string"
+      updatedAt:
+        description: "Date at which the object was updated"
+        type: "string"
+      deletedAt:
+        description: "Date at which the object was deleted"
+        type: "string"
+  QuoteRef:
+    description: "Model of a quote reference"
+    required:
+    - "id"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the quote"
+        type: "string"
+      href:
+        description: "Unique URI used to access to the quote resource"
+        type: "string"
+  OrderRef:
+    description: "Model of an order reference"
+    required:
+    - "id"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the order"
+        type: "string"
+      href:
+        description: "Link to the order ressource"
+        type: "string"
+  RequestRef:
+    description: "Model of a request reference"
+    required:
+    - "id"
+    - "hef"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the request"
+        type: "string"
+      hef:
+        description: "Link to the request ressource"
+        type: "string"
+  RequestItems:
+    description: "The request's item with offer, site, quote and order."
+    required:
+    - "id"
+    - "offer"
+    - "quote"
+    - "order"
+    - "site"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the request's item"
+        type: "string"
+      offer:
+        description: "The offer"
+        $ref: "#/definitions/OfferRef"
+      quote:
+        description: "The quote"
+        $ref: "#/definitions/QuoteRef"
+      order:
+        description: "The order"
+        $ref: "#/definitions/OrderRef"
+      site:
+        description: "The delivery site"
+        $ref: "#/definitions/Location"
+      currentSite:
+        description: "The current site"
+        $ref: "#/definitions/Location"
+      primaryContact:
+        description: "The customer primary contact"
+        $ref: "#/definitions/Individual"
+      secondaryContact:
+        description: "The customer secondary contact"
+        $ref: "#/definitions/Individual"
+  OrganisationRef:
+    description: ""
+    required:
+    - "id"
+    - "href"
+    type: "object"
+    properties:
+      id:
+        description: ""
+        type: "string"
+      href:
+        description: ""
+        type: "string"
+  Address:
+    description: ""
+    required:
+    - "streetName"
+    - "city"
+    - "postalCode"
+    type: "object"
+    properties:
+      streetName:
+        description: ""
+        type: "string"
+      streetExtensionName:
+        description: ""
+        type: "string"
+      location:
+        description: ""
+        type: "string"
+      city:
+        description: ""
+        type: "string"
+      postalCode:
+        description: ""
+        type: "string"
+      state:
+        description: ""
+        type: "string"
+  CountryRef:
+    description: "Describes Minimal Country object with a reference on the complete\
+      \ details of the country"
+    required:
+    - "id"
+    - "name"
+    type: "object"
+    properties:
+      id:
+        description: ""
+        type: "string"
+      name:
+        description: ""
+        type: "string"
+      href:
+        description: ""
+        type: "string"
+  GeoCoding:
+    description: "This model allows to locate a geographical point with coordinates.\n\
+      NB : ParcWeb geographicPoint"
+    required:
+    - "latitude"
+    - "longitude"
+    type: "object"
+    properties:
+      latitude:
+        description: "Latitude of the geographical point."
+        type: "number"
+        format: "double"
+      longitude:
+        description: "Longitude of the geographical point."
+        type: "number"
+        format: "double"
+      accuracy:
+        description: "Accuracy of the geographical point."
+        type: "string"
+  Orders:
+    description: "Model of an order\n[![Texte alternatif](https://run.pstmn.io/button.svg\
+      \ \"texte pour le titre, facultatif\")](http://www.google.fr \"texte pour le\
+      \ titre, facultatif\")"
+    required:
+    - "id"
+    - "reference"
+    - "customerAccount"
+    - "requestor"
+    - "currentOwner"
+    - "type"
+    - "subType"
+    - "status"
+    - "comments"
+    - "item"
+    - "currency"
+    - "priority"
+    - "billing"
+    - "isArchived"
+    - "isSso"
+    - "keyDates"
+    - "createdAt"
+    - "updatedAt"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the request"
+        type: "string"
+      reference:
+        description: "Reference set by the Customer for identifying the request"
+        type: "string"
+      customerAccount:
+        description: "Reference on the customer Account"
+        $ref: "#/definitions/CustomerAccountRef"
+      requestor:
+        description: "The person who created the request"
+        $ref: "#/definitions/IndividualGET"
+      currentOwner:
+        description: "The current owner of the request. It's the same as the user\
+          \ until the quote is reassigned"
+        $ref: "#/definitions/IndividualGET"
+      type:
+        description: "The short type of the request (new, change, ...)"
+        $ref: "#/definitions/OrderShortTypes"
+      subType:
+        description: "A more readable type"
+        $ref: "#/definitions/OrderTypes"
+      status:
+        description: "Indicate the status of the request such as draft, sent, etc..."
+        $ref: "#/definitions/OrderStatus"
+      comments:
+        description: "A comment on the request"
+        type: "string"
+      item:
+        description: ""
+        $ref: "#/definitions/OrderItem"
+      currency:
+        description: "The currency to use"
+        $ref: "#/definitions/Currency"
+      priority:
+        description: ""
+        type: "string"
+      billing:
+        description: ""
+        $ref: "#/definitions/Billing"
+      isArchived:
+        description: "If the request is archived or not"
+        type: "boolean"
+      isSso:
+        description: "If the quote and the order are accepted together or not"
+        type: "boolean"
+      keyDates:
+        description: "Structure containing the key dates associated with the order"
+        $ref: "#/definitions/Milestone"
+      createdAt:
+        description: "Date at which the object was created"
+        type: "string"
+        format: "date-time"
+      updatedAt:
+        description: "Date at which the object was updated"
+        type: "string"
+        format: "date-time"
+  Productions:
+    description: ""
+    required:
+    - "id"
+    - "href"
+    type: "object"
+    properties:
+      id:
+        description: ""
+        type: "string"
+      href:
+        description: ""
+        type: "string"
+  Events:
+    description: "Model of an event"
+    required:
+    - "id"
+    - "author"
+    - "type"
+    - "comment"
+    - "parent"
+    - "createdAt"
+    - "updatedAt"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the step\nNB : N'existe pas. On pourrait\
+          \ prendre idProduction-eventIndex"
+        type: "string"
+      author:
+        description: "Author of the event"
+        $ref: "#/definitions/IndividualGET"
+      type:
+        description: "type of the event"
+        $ref: "#/definitions/EventTypes"
+      comment:
+        description: "Description of the step.\nNB : require ?"
+        type: "string"
+      parent:
+        description: "Unique identifier of the production of the event\nNB : Pour\
+          \ des raisons de coherence le champ se nomme parent. On met un id ou une\
+          \ ressource ?"
+        $ref: "#/definitions/OrderRef"
+      createdAt:
+        description: "Date at which the object was created"
+        type: "string"
+        format: "date-time"
+      updatedAt:
+        description: "Date at which the object was updated"
+        type: "string"
+        format: "date-time"
+  Messages:
+    description: ""
+    required:
+    - "id"
+    - "author"
+    - "type"
+    - "title"
+    - "body"
+    - "createdAt"
+    - "updatedAt"
+    type: "object"
+    properties:
+      id:
+        description: ""
+        type: "string"
+      author:
+        description: ""
+        $ref: "#/definitions/IndividualGET"
+      type:
+        description: ""
+        $ref: "#/definitions/MessageType"
+      title:
+        description: ""
+        type: "string"
+      body:
+        description: ""
+        type: "string"
+      createdAt:
+        description: ""
+        type: "string"
+      updatedAt:
+        description: ""
+        type: "string"
+  Offers:
+    description: "Model describing an offer"
+    required:
+    - "code"
+    - "name"
+    - "customerRequest"
+    type: "object"
+    properties:
+      id:
+        description: "Unique identifier of the offer.\nNB : en l'absence de referentiel,\
+          \ le code ne peut servir d'id. Travaux a mener."
+        type: "string"
+      code:
+        description: "Code of the offer"
+        type: "string"
+      name:
+        description: "Name of the offer"
+        type: "string"
+      customerRequest:
+        description: ""
+        type: "string"
+      href:
+        description: "Link to the offer ressoure"
+        type: "string"
+  OrderItem:
+    description: ""
+    required:
+    - "offer"
+    - "quotes"
+    - "site"
+    - "currentSite"
+    - "primaryContact"
+    - "secondaryContact"
+    type: "object"
+    properties:
+      offer:
+        description: ""
+        $ref: "#/definitions/Offers"
+      quotes:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/QuoteRef"
+      site:
+        description: ""
+        $ref: "#/definitions/LocationGET"
+      currentSite:
+        description: ""
+        $ref: "#/definitions/LocationGET"
+      primaryContact:
+        description: ""
+        $ref: "#/definitions/IndividualGET"
+      secondaryContact:
+        description: ""
+        $ref: "#/definitions/IndividualGET"
+      production:
+        description: ""
+        $ref: "#/definitions/Productions"
+  OrdersPOST_tpl:
+    description: ""
+    required:
+    - "reference"
+    - "customerAccount"
+    - "requestor"
+    - "type"
+    - "subType"
+    - "currency"
+    - "status"
+    - "customerRequestedDeliveryAt"
+    - "priority"
+    - "billing"
+    - "isSso"
+    - "comment"
+    type: "object"
+    discriminator: petType
+    properties:
+      reference:
+        description: ""
+        type: "string"
+      customerAccount:
+        description: ""
+        $ref: "#/definitions/CustomerAccountPOST"
+      requestor:
+        description: ""
+        $ref: "#/definitions/Individual"
+      type:
+        description: ""
+        $ref: "#/definitions/OrderShortTypes"
+      subType:
+        description: ""
+        $ref: "#/definitions/OrderTypes"
+      currency:
+        description: ""
+        $ref: "#/definitions/Currency"
+      status:
+        description: ""
+        $ref: "#/definitions/OrderStatus"
+      customerRequestedDeliveryAt:
+        description: ""
+        type: "string"
+        format: "date-time"
+      priority:
+        description: ""
+        type: "string"
+      billing:
+        description: ""
+        $ref: "#/definitions/Billing"
+      isSso:
+        description: ""
+        type: "boolean"
+      comment:
+        description: ""
+        type: "string"
+      petType:
+        description: Type of a pet
+        type: string
+  CustomerAccountPOST:
+    description: ""
+    required:
+    - "id"
+    type: "object"
+    properties:
+      id:
+        description: ""
+        type: "string"
+  IndividualGET:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/Individual"
+    - required:
+      - "id"
+      - "name"
+      type: "object"
+      properties:
+        id:
+          description: ""
+          type: "string"
+        name:
+          description: ""
+          type: "string"
+  Billing:
+    description: ""
+    required:
+    - "account"
+    - "subAccount"
+    - "country"
+    - "currency"
+    - "city"
+    type: "object"
+    properties:
+      account:
+        description: ""
+        type: "string"
+      subAccount:
+        description: ""
+        type: "string"
+      country:
+        description: ""
+        type: "string"
+      currency:
+        description: ""
+        $ref: "#/definitions/Currency"
+      city:
+        description: ""
+        type: "string"
+  OrderItemPOST:
+    description: ""
+    required:
+    - "offer"
+    - "site"
+    - "primaryContact"
+    - "secondaryContact"
+    type: "object"
+    properties:
+      offer:
+        description: ""
+        $ref: "#/definitions/OffersPOST"
+      site:
+        description: ""
+        $ref: "#/definitions/LocationPOST"
+      primaryContact:
+        description: ""
+        $ref: "#/definitions/Individual"
+      secondaryContact:
+        description: ""
+        $ref: "#/definitions/Individual"
+  CountryRefPOST:
+    description: ""
+    required:
+    - "id"
+    type: "object"
+    properties:
+      id:
+        description: ""
+        type: "string"
+  OffersPOST:
+    description: ""
+    required:
+    - "id"
+    - "characteristics"
+    type: "object"
+    properties:
+      id:
+        description: ""
+        type: "string"
+      characteristics:
+        description: ""
+        $ref: "#/definitions/BvpnSmallCharacteristics"
+  BvpnSmallCharacteristics:
+    description: ""
+    required:
+    - "type"
+    - "downStreamSpeed"
+    - "upStreamSpeed"
+    - "dslSupport"
+    - "backup"
+    - "voice"
+    - "internet"
+    - "options"
+    - "comment"
+    - "attachments"
+    - "site"
+    type: "object"
+    properties:
+      type:
+        description: ""
+        type: "string"
+      downStreamSpeed:
+        description: ""
+        type: "string"
+      upStreamSpeed:
+        description: ""
+        type: "string"
+      dslSupport:
+        description: ""
+        $ref: "#/definitions/OptionDslSupport"
+      backup:
+        description: ""
+        $ref: "#/definitions/OptionBackup"
+      voice:
+        description: ""
+        $ref: "#/definitions/OptionVoice"
+      internet:
+        description: ""
+        $ref: "#/definitions/OptionInternet"
+      options:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/ServiceOptionsBVPN"
+      comment:
+        description: ""
+        type: "string"
+      attachments:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/AttachmentsPOST"
+      site:
+        description: ""
+        $ref: "#/definitions/LocationPOST"
+  OptionDslSupport:
+    description: ""
+    required:
+    - "provideBy"
+    - "type"
+    - "phone"
+    type: "object"
+    properties:
+      provideBy:
+        description: ""
+        type: "string"
+      type:
+        description: ""
+        type: "string"
+      phone:
+        description: ""
+        type: "string"
+  OptionBackup:
+    description: ""
+    required:
+    - "type"
+    - "speed"
+    - "speedUnit"
+    type: "object"
+    properties:
+      type:
+        description: ""
+        type: "string"
+      speed:
+        description: ""
+        type: "integer"
+        format: "int32"
+      speedUnit:
+        description: ""
+        type: "string"
+  OptionVoice:
+    description: ""
+    type: "object"
+    properties:
+      provideBy:
+        description: ""
+        type: "string"
+      channels:
+        description: ""
+        type: "integer"
+        format: "int32"
+      plugType:
+        description: ""
+        type: "string"
+      businessTalkQuality:
+        description: ""
+        type: "string"
+      businessTalkConnectivity:
+        description: ""
+        type: "string"
+  OptionInternet:
+    description: ""
+    required:
+    - "profile"
+    type: "object"
+    properties:
+      profile:
+        description: ""
+        type: "string"
+      breakoutType:
+        description: ""
+        type: "string"
+      firewall:
+        description: ""
+        type: "string"
+      bandwith:
+        description: ""
+        type: "integer"
+        format: "int32"
+  AttachmentsPOST:
+    description: ""
+    required:
+    - "type"
+    - "name"
+    - "comment"
+    type: "object"
+    properties:
+      type:
+        description: "Example : requirements"
+        type: "string"
+      name:
+        description: ""
+        type: "string"
+      comment:
+        description: ""
+        type: "string"
+  LocationGET:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/Location"
+    - required:
+      - "id"
+      - "href"
+      - "OS_address"
+      type: "object"
+      properties:
+        id:
+          description: ""
+          type: "string"
+        href:
+          description: ""
+          type: "string"
+        OS_address:
+          description: ""
+          $ref: "#/definitions/AddressGET"
+  AddressGET:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/Address"
+    - required:
+      - "geographicPoint"
+      - "country"
+      type: "object"
+      properties:
+        formattedAddress:
+          description: ""
+          type: "string"
+        geographicPoint:
+          description: ""
+          $ref: "#/definitions/GeoCoding"
+        country:
+          description: ""
+          $ref: "#/definitions/CountryRef"
+  LocationPOST:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/Location"
+    - required:
+      - "address"
+      - "primaryContact"
+      - "secondaryContact"
+      type: "object"
+      properties:
+        address:
+          description: ""
+          $ref: "#/definitions/AddressPOST"
+        primaryContact:
+          description: ""
+          $ref: "#/definitions/Individual"
+        secondaryContact:
+          description: ""
+          $ref: "#/definitions/Individual"
+  AddressPOST:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/Address"
+    - required:
+      - "country"
+      type: "object"
+      properties:
+        country:
+          description: ""
+          $ref: "#/definitions/CountryRefPOST"
+  QR_BvpnSmallPOST:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/OrdersPOST_tpl"
+    - required:
+      - "characteristics"
+      type: "object"
+      properties:
+        characteristics:
+          description: ""
+          $ref: "#/definitions/BvpnSmallCharacteristics"
+  QR_BvpnCorpPOST:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/OrdersPOST_tpl"
+    - required:
+      - "characteristics"
+      type: "object"
+      properties:
+        characteristics:
+          description: ""
+          $ref: "#/definitions/BvpnCorpCharacteristics"
+  BvpnCorpCharacteristics:
+    description: ""
+    required:
+    - "vpnBandwith"
+    - "primaryRouter"
+    type: "object"
+    properties:
+      vpnBandwith:
+        description: ""
+        type: "string"
+      primaryAccessSpeed:
+        description: ""
+        type: "string"
+      primaryRouter:
+        description: ""
+        $ref: "#/definitions/OptionRouter"
+      options:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/ServiceOptionsBVPN"
+      voice:
+        description: ""
+        $ref: "#/definitions/OptionVoice"
+      video:
+        description: ""
+        $ref: "#/definitions/OptionVideo"
+      internet:
+        description: ""
+        $ref: "#/definitions/OptionInternet"
+      backup:
+        description: ""
+        $ref: "#/definitions/OptionBackup"
+      comment:
+        description: ""
+        type: "string"
+      attachments:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/AttachmentsPOST"
+  QR_DigitalBvpnPOST:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/OrdersPOST_tpl"
+    - required:
+      - "characteristics"
+      type: "object"
+      properties:
+        characteristics:
+          description: ""
+          $ref: "#/definitions/DigitalBvpnCharacteristics"
+  DigitalBvpnCharacteristics:
+    description: ""
+    required:
+    - "siteProfile"
+    - "bandwith"
+    - "phone"
+    - "voiceChannel"
+    - "visionChannel"
+    - "lastInstallation"
+    - "ipConfiguration"
+    - "WLAN"
+    - "GTR"
+    - "VPN"
+    - "site"
+    - "networkConsulting"
+    type: "object"
+    properties:
+      siteProfile:
+        description: ""
+        type: "string"
+      bandwith:
+        description: ""
+        type: "string"
+      phone:
+        description: ""
+        type: "string"
+      voiceChannel:
+        description: ""
+        type: "string"
+      visionChannel:
+        description: ""
+        type: "string"
+      lastInstallation:
+        description: ""
+        type: "string"
+      ipConfiguration:
+        description: ""
+        type: "string"
+      WLAN:
+        description: ""
+        type: "string"
+      GTR:
+        description: ""
+        type: "string"
+      VPN:
+        description: ""
+        type: "string"
+      site:
+        description: ""
+        $ref: "#/definitions/LocationPOST"
+      networkConsulting:
+        description: ""
+        $ref: "#/definitions/OptionNetworkConsulting"
+  OptionNetworkConsulting:
+    description: ""
+    required:
+    - "availability"
+    - "optimization"
+    - "proactivity"
+    type: "object"
+    properties:
+      availability:
+        description: ""
+        type: "string"
+      optimization:
+        description: ""
+        type: "string"
+      proactivity:
+        description: ""
+        type: "string"
+  OptionVideo:
+    description: ""
+    type: "object"
+    properties:
+      provideBy:
+        description: ""
+        type: "string"
+      plugType:
+        description: ""
+        type: "string"
+      bandwidth:
+        description: ""
+        type: "string"
+  BTalkCharacteristics:
+    description: ""
+    required:
+    - "primaryAccessType"
+    type: "object"
+    properties:
+      primaryAccessType:
+        description: ""
+        $ref: "#/definitions/OptionAccess"
+      secondaryAccessType:
+        description: ""
+        $ref: "#/definitions/OptionAccess"
+      serviceClass:
+        description: ""
+        type: "string"
+      localVoiceService:
+        description: ""
+        type: "string"
+      directInwardNumber:
+        description: ""
+        type: "integer"
+        format: "int32"
+      options:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/ServiceOptionsBVPN"
+      comment:
+        description: ""
+        type: "string"
+      attachments:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/AttachmentsPOST"
+  OptionAccess:
+    description: ""
+    type: "object"
+    properties:
+      type:
+        description: ""
+        type: "string"
+      E1Number:
+        description: ""
+        type: "string"
+      ipType:
+        description: ""
+        type: "string"
+  QR_BTalkPOST:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/OrdersPOST_tpl"
+    - required:
+      - "characteristics"
+      type: "object"
+      properties:
+        characteristics:
+          description: ""
+          $ref: "#/definitions/BTalkCharacteristics"
+  MLanCharacteristics:
+    description: ""
+    required:
+    - "orangeMangedServices"
+    - "serviceLevel"
+    - "portsNumber"
+    type: "object"
+    properties:
+      orangeMangedServices:
+        description: ""
+        type: "string"
+      serviceLevel:
+        description: ""
+        type: "string"
+      portsNumber:
+        description: ""
+        type: "integer"
+        format: "int32"
+      equipmentProcurement:
+        description: ""
+        type: "string"
+      manufacturer:
+        description: ""
+        type: "string"
+      options:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/ServiceOptionsBVPN"
+      contractTerm:
+        description: ""
+        type: "string"
+      comment:
+        description: ""
+        type: "string"
+      attachments:
+        description: ""
+        type: "array"
+        items:
+          $ref: "#/definitions/AttachmentsPOST"
+  QR_MLanPOST:
+    description: ""
+    allOf:
+    - $ref: "#/definitions/OrdersPOST_tpl"
+    - required:
+      - "characteristics"
+      type: "object"
+      properties:
+        characteristics:
+          description: ""
+          $ref: "#/definitions/MLanCharacteristics"
+  OptionRouter:
+    description: ""
+    required:
+    - "type"
+    type: "object"
+    properties:
+      type:
+        description: ""
+        type: "string"
+      chassis:
+        description: ""
+        type: "string"
+      card:
+        description: ""
+        type: "string"
+      IOSfeatures:
+        description: ""
+        type: "string"
